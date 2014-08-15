@@ -9,5 +9,6 @@ This workflow has the following actions:
 - `clstop`: Will stop a running clock.
 
 # TODO
+- add source folder
 - add an action to list available entries
 - add an action to remove an entry
