@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>nl.schmkr. alfredworkflow.clocker</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>049BC1D6-BFCB-4215-B7AC-2FD5057788D8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>752DF1B9-7DB5-42C3-AA02-0E556D1DBF0F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>05825A9A-B028-45A8-92B4-4E5831B21F57</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D35E7F1F-013E-43B9-950B-56F280346327</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>792848AB-AD6B-453E-88A8-2F9381403024</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>049BC1D6-BFCB-4215-B7AC-2FD5057788D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D35E7F1F-013E-43B9-950B-56F280346327</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>86766E00-8DCA-427E-8949-6B89C5970BA7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>schmkr</string>
+	<key>description</key>
+	<string>Control clocker with Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Clocker</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>source clocker.sh;
+
+clockerStatus=$(clocker status);
+if [ "$clockerStatus" != "stopped" ]
+then
+	clocker stop
+fi
+
+clocker start -t '{query}';
+
+echo "Clocker started {query}!"
+
+</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D35E7F1F-013E-43B9-950B-56F280346327</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>clstart</string>
+				<key>subtext</key>
+				<string>Start a task with clocker</string>
+				<key>text</key>
+				<string>Clocker start</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>05825A9A-B028-45A8-92B4-4E5831B21F57</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Clocker started</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>86766E00-8DCA-427E-8949-6B89C5970BA7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>clstop</string>
+				<key>subtext</key>
+				<string>Stop the current running clocker task</string>
+				<key>text</key>
+				<string>Clocker stop</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>792848AB-AD6B-453E-88A8-2F9381403024</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Clocker stopped</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>752DF1B9-7DB5-42C3-AA02-0E556D1DBF0F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>source clocker.sh;
+
+clockerStatus=$(clocker status);
+if [ "$clockerStatus" == "stopped" ]
+then
+	echo "There was no running clock"
+else 
+	clocker stop;
+	echo $(clocker list | tail -n1)
+fi
+
+
+</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>049BC1D6-BFCB-4215-B7AC-2FD5057788D8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>This workflow makes it easy to start and stop clocker. Clocker in an NPM package that allows easy time tracking.</string>
+	<key>uidata</key>
+	<dict>
+		<key>049BC1D6-BFCB-4215-B7AC-2FD5057788D8</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>05825A9A-B028-45A8-92B4-4E5831B21F57</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>752DF1B9-7DB5-42C3-AA02-0E556D1DBF0F</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>792848AB-AD6B-453E-88A8-2F9381403024</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>86766E00-8DCA-427E-8949-6B89C5970BA7</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>D35E7F1F-013E-43B9-950B-56F280346327</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/schmkr/clocker.alfredworkflow</string>
+</dict>
+</plist>
